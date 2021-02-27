@@ -11,7 +11,7 @@
   <div class="container">
     <div class="jumbotron">
       <h1>Cheeses Crust</h1>
-      <h3>"Sweet Cheeses, that's good Pizza"</h3>
+      <h3>"Sweet Cheeses, that's good Pizza!"</h3>
       <p>Welcome to Pizza Parlor. All our pizzas are made with a hand-tossed, wood fire oven-baked crust and marinara sauce. Please submit your order below!</p>
     </div>
     <div class="row">
@@ -27,8 +27,8 @@
             <label for="size">Select your pizza size:</label>
             <select class="form-control" id="size">
               <option value="small">Small</option>
-              <option value="small">Medium</option>
-              <option value="small">Large</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
             </select>
           </div>
           <div class="form-group">
@@ -44,20 +44,19 @@
             <input type="checkbox" name="toppings" value="pineapple"> Pineapple<br>
             <input type="checkbox" name="toppings" value="extra-cheese"> Extra cheese<br>
           </div>
+          <button type="submit" class="btn-success">Add pizza to your order</button>
         </form>
-        <button type="submit" class="btn-success">Add pizza to your order</button>
+      </div>
+      <div class="col-md-6">
+        <div id="show-order">
+          <p>Current order:</p>
+          <p id="orders"></p>
+          <div id="buttons"></div>
+        </div>
+        <div id="total cost">
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div id="show-order">
-        <p>Current order:</p>
-        <p id="orders"></p>
-        <div id="buttons"></div>
-      </div>
-      <div id="total cost">
-      </div>
-    </div>
-
   </div>
  <br>
  <br> 
