@@ -48,8 +48,9 @@ Pizza.prototype.pickSize = function(size) {
 }
 
 Pizza.prototype.getCost = function() {
-  let basePrice = this.size*0.6;
-  let toppingsPrice = (this.toppings.length()-2) * 2;
+  let basePrice = pizzaSizes[this.size]*0.7;
+  let toppingsPrice = (this.toppings.length-2) * 2;
+  return basePrice += toppingsPrice;
 }
 
 const pizzaSizes = {
@@ -61,7 +62,6 @@ const pizzaSizes = {
 // User Interface Logic --------------
 let ordersList = new OrdersList();
 
-// Display elements from toppings array as bulleted list and ***COST
 function displayPizzaDetails(ordersListToDisplay) {
   let pizzaList = $("ul#pizzas");
   let htmlForPizzaList = "";
@@ -79,6 +79,10 @@ function attachContactListeners() {
     $("#show-order").show();
   });
 };
+
+function calculateTotalPrice(ordersList) {
+
+}
 
 $(document).ready(function () {
   attachContactListeners();
@@ -100,5 +104,13 @@ $(document).ready(function () {
 
     ordersList.addPizza(pizza);
     displayPizzaDetails(ordersList);
+    // DISPLAY TOTAL COST
+    // EMPTY OUT CHECKBOX
   })
 })
+
+let testPizza = new Pizza();
+testPizza.pickSize("Small");
+testPizza.addTopping("pepperoni");
+testPizza.addTopping("onion");
+testPizza.addTopping("mushroom");
