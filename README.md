@@ -16,6 +16,8 @@
 
 This is a web application for an imaginary pizza company that allows the user to obtain the cost of their pizza order depending on the size and toppings. This was made as a part of Epicodus' code review #4 made to demonstrate understanding of JavaScript objects and constructors.
 
+To see website hosted on gh-pages click [here](https://shanole.github.io/pizza-parlor/index.html)!
+
 ## Setup/Installation Requirements
 
 * Clone this repository to your machine
