@@ -121,8 +121,9 @@ $(document).ready(function () {
 
     ordersList.addPizza(pizza);
     displayPizzaDetails(ordersList);
-    $("#total-cost").text(calculateTotalPrice(ordersList))
+    $("#total-cost").text(calculateTotalPrice(ordersList));
     $('.toppings').prop('checked', false);
-    $('.toppings').removeAttr("disabled");
+    $("input").removeAttr("disabled");
+    $("#size").removeAttr("disabled");
   })
 })

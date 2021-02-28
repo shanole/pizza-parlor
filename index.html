@@ -12,23 +12,23 @@
     <div class="jumbotron">
       <h1>Cheeses Crust</h1>
       <h3>"Sweet Cheeses, that's good Pizza!"</h3>
-      <p>Welcome to Pizza Parlor. All our pizzas are made with a hand-tossed, wood fire oven-baked crust and marinara sauce. Please submit your order below!</p>
+      <p>Welcome to Cheeses Crust. We serve premium, hand-tossed, wood-fired pizza with a homemade marinara sauce base. It's simply heavenly!</p>
     </div>
     <div class="row">
       <div class="col-md-6">
+        <h4>Please enter your order below:</h4>
         <form id="pizza-order">
           <div class="form-group">
-
-          <label for="name">Please enter the name for the order:</label>
-          <input class="form-control" id="name" type="text" required>
+            <label for="name">What is your name?</label>
+            <input class="form-control" id="name" type="text" required>
+            <br>
             <label for="size">Select your pizza size:</label>
             <select class="form-control" id="size">
               <option value="Small">Small</option>
               <option value="Medium">Medium</option>
               <option value="Large">Large</option>
             </select>
-          </div>
-          <div class="form-group">
+            <br>
             <p>Select your toppings below. First 2 toppings are free, +$2.00 for each additional topping.</p>
             <input type="checkbox" class="toppings" value="pepperoni"> Pepperoni<br>
             <input type="checkbox" class="toppings" value="sausage"> Sausage<br>
@@ -47,12 +47,11 @@
       </div>
       <div class="col-md-6">
         <div id="show-order">
-          <h3>Current order:</h3>
+          <h4>Current order:</h4>
           <p><span id="customer-name"></span>, here is what you've ordered so far:</p>
           <ul id="pizzas"></ul>
-          <div id="buttons"></div>
+          <p>Total cost: $<span id="total-cost"></span></p>
         </div>
-        <p>Total cost: $<span id="total-cost"></span></p>
       </div>
     </div>
   </div>
