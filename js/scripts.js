@@ -23,7 +23,7 @@ OrdersList.prototype.findPizza = function (id) {
   }
 }
 
-OrdersList.prototype.deleteContact = function (id) {
+OrdersList.prototype.deletePizza = function (id) {
   if (this.pizzas[id] === undefined) {
     return false;
   }
@@ -54,37 +54,59 @@ Pizza.prototype.getCost = function() {
 }
 
 const pizzaSizes = {
-  "small" : 10,
-  "medium" : 12,
-  "large" : 14,
+  "Small" : 10,
+  "Medium" : 12,
+  "Large" : 14,
 }
 
 // User Interface Logic --------------
 let ordersList = new OrdersList();
 
+// Display elements from toppings array as bulleted list and ***COST
 function displayPizzaDetails(ordersListToDisplay) {
-
+  let pizzaList = $("ul#pizzas");
+  let htmlForPizzaList = "";
+  Object.keys(ordersListToDisplay.pizzas).forEach(function (key) {
+    const pizza = ordersListToDisplay.findPizza(key);
+    htmlForPizzaList += "<li id=" + pizza.id + ">" + pizza.size + " pizza with " + pizza.toppings.join(", ") + ": $" + pizza.price + "  <button class='deleteButton' id=" + pizza.id + ">Remove</button></li>"});
+  pizzaList.html(htmlForPizzaList);
 }
 
-function showPizza(pizzaId) {
-  const pizza = OrdersList.findPizza(pizzaId)
-}
+function attachContactListeners() {
+  $("#pizzas").on("click", ".deleteButton", function () {
+    ordersList.deletePizza(this.id);
+    $("#show-order").hide();
+    displayPizzaDetails(ordersList);
+    $("#show-order").show();
+  });
+};
 
 $(document).ready(function () {
+  attachContactListeners();
+  $('#only').click(function() {
+    $(this).siblings().attr('disabled', this.checked);
+  });
+
   $("form#pizza-order").submit(function (event) {
     event.preventDefault();
 
     pizza = new Pizza();
 
+    const customerName = $("input#name").val();
     const pizzaSize = $("#size").val();
+    pizza.pickSize(pizzaSize);
     $("input:checkbox[name=toppings]:checked").each(function (){
       const topping = $(this).val();
       pizza.toppings.push(topping);
     })
+    $("#show-order").show();
 
-    pizza.pickSize(pizzaSize);
+    ordersList.addPizza(pizza);
+    displayPizzaDetails(ordersList);
 
+    console.log(customerName);
     console.log(pizza.size);
     console.log(pizza.toppings);
+    // I also want the submit button to display the pizza stuff on the right column
   })
 })
