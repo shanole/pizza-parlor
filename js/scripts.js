@@ -34,7 +34,6 @@ OrdersList.prototype.deletePizza = function (id) {
 }
 
 // Business Logic for pizza --------------
-
 function Pizza() {
   this.size;
   this.toppings = [];
@@ -91,22 +90,15 @@ $(document).ready(function () {
     event.preventDefault();
 
     pizza = new Pizza();
-
-    const customerName = $("input#name").val();
-    const pizzaSize = $("#size").val();
-    pizza.pickSize(pizzaSize);
+    pizza.pickSize($("#size").val());
     $("input:checkbox[name=toppings]:checked").each(function (){
       const topping = $(this).val();
       pizza.toppings.push(topping);
     })
+    $("#customer-name").text($("input#name").val());
     $("#show-order").show();
 
     ordersList.addPizza(pizza);
     displayPizzaDetails(ordersList);
-
-    console.log(customerName);
-    console.log(pizza.size);
-    console.log(pizza.toppings);
-    // I also want the submit button to display the pizza stuff on the right column
   })
 })
