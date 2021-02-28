@@ -53,7 +53,7 @@ Pizza.prototype.getCost = function() {
   if (numberOfToppings > 2) {
     basePrice += (numberOfToppings-2)*2;
   }
-  return basePrice;
+  return basePrice.toFixed(2);
 }
 
 const pizzaSizes = {
@@ -88,10 +88,10 @@ function calculateTotalPrice(ordersList) {
   let total = 0;
   Object.keys(ordersList.pizzas).forEach(function(key) {
     const pizza = ordersList.findPizza(key);
-    pizzaPrice = pizza.getCost();
+    pizzaPrice = parseFloat(pizza.getCost());
     total += pizzaPrice;
   });
-  return total;
+  return total.toFixed(2);
 }
 
 $(document).ready(function () {
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
     pizza = new Pizza();
     pizza.pickSize($("#size").val());
-    $("input:checkbox[name=toppings]:checked").each(function (){
+    $("input:checkbox:checked").each(function (){
       const topping = $(this).val();
       pizza.toppings.push(topping);
     })
@@ -115,6 +115,6 @@ $(document).ready(function () {
     ordersList.addPizza(pizza);
     displayPizzaDetails(ordersList);
     $("#total-cost").text(calculateTotalPrice(ordersList))
-    // EMPTY OUT CHECKBOX
+    $('.toppings').prop('checked', false);
   })
 })
