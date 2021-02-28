@@ -49,8 +49,11 @@ Pizza.prototype.pickSize = function(size) {
 
 Pizza.prototype.getCost = function() {
   let basePrice = pizzaSizes[this.size]*0.7;
-  let toppingsPrice = (this.toppings.length-2) * 2;
-  return basePrice += toppingsPrice;
+  let numberOfToppings = this.toppings.length;
+  if (numberOfToppings > 2) {
+    basePrice += (numberOfToppings-2)*2;
+  }
+  return basePrice;
 }
 
 const pizzaSizes = {
@@ -114,3 +117,7 @@ testPizza.pickSize("Small");
 testPizza.addTopping("pepperoni");
 testPizza.addTopping("onion");
 testPizza.addTopping("mushroom");
+
+let testPizza2 = new Pizza();
+testPizza2.pickSize("Small");
+testPizza2.addTopping("pepperoni");
