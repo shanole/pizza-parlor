@@ -105,10 +105,17 @@ $(document).ready(function () {
 
     pizza = new Pizza();
     pizza.pickSize($("#size").val());
-    $("input:checkbox:checked").each(function (){
-      const topping = $(this).val();
-      pizza.toppings.push(topping);
-    })
+
+    if($("#only").is(':checked')){
+      pizza.toppings.push("cheese only");
+    }
+    else {
+      $("input:checkbox:checked").each(function (){
+        const topping = $(this).val();
+        pizza.toppings.push(topping);
+      })
+    }
+ 
     $("#customer-name").text($("input#name").val());
     $("#show-order").show();
 
@@ -116,5 +123,6 @@ $(document).ready(function () {
     displayPizzaDetails(ordersList);
     $("#total-cost").text(calculateTotalPrice(ordersList))
     $('.toppings').prop('checked', false);
+    $('.toppings').removeAttr("disabled");
   })
 })
