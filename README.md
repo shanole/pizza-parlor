@@ -35,21 +35,21 @@ _{Leave nothing to chance! You want it to be easy for potential users, employers
 
 Describe: Pizza.prototype.getCost()
 
-Test: "Will return a price equal to 0.7 * the diameter of the pizza"
-let pizza = Pizza {toppings: [], size: 10}
-Expect(Pizza.getCost).toEqual(7)
+Test1: "Will return a price equal to 0.7 * the diameter of the pizza"
+let pizza = {toppings: [], size: 10}
+Expect(pizza.getCost).toEqual(7)
 
-Test: "Will return a price equal to 0.7 * the diameter of the pizza plus an additional $2 per topping"
-let pizza = Pizza {toppings: ["pepperoni","mushroom","onion"], size: 10}
-Expect(Pizza.getCost).toEqual(13);
+Test2: "Will return a price equal to 0.7 * the diameter of the pizza plus an additional $2 per topping"
+let pizza = {toppings: ["pepperoni","mushroom","onion"], size: 10}
+Expect(pizza.getCost).toEqual(13);
 
-Test: "Will return a price equal to 0.7 * the diameter of the pizza plus an additional $2 per topping BUT the first 2 toppings are free"
-let pizza = Pizza {toppings: ["pepperoni","mushroom","onion"], size: 10}
-Expect(Pizza.getCost).toEqual(9);
+Test3: "Will return a price equal to 0.7 * the diameter of the pizza plus an additional $2 per topping BUT the first 2 toppings are free"
+let pizza = {toppings: ["pepperoni","mushroom","onion"], size: 10}
+Expect(pizza.getCost).toEqual(9);
 
-Test: "Will return a price equal to 0.7 * the diameter of the pizza if the number of toppings is 2 or less."
-let pizza = Pizza {toppings: ["pepperoni"], size: 10}
-Expect(Pizza.getCost).toEqual(7);
+Test4: "Will return a price equal to 0.7 * the diameter of the pizza if the number of toppings is 2 or less."
+let pizza = {toppings: ["pepperoni"], size: 10}
+Expect(pizza.getCost).toEqual(7);
 
 
 ## License
