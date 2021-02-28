@@ -98,6 +98,8 @@ $(document).ready(function () {
   attachContactListeners();
   $('#only').click(function() {
     $(this).siblings().attr('disabled', this.checked);
+    $("#name").removeAttr("disabled");
+    $("#size").removeAttr("disabled");
   });
 
   $("form#pizza-order").submit(function (event) {
@@ -123,7 +125,6 @@ $(document).ready(function () {
     displayPizzaDetails(ordersList);
     $("#total-cost").text(calculateTotalPrice(ordersList));
     $('.toppings').prop('checked', false);
-    $("input").removeAttr("disabled");
-    $("#size").removeAttr("disabled");
+    $(".toppings").removeAttr("disabled");
   })
 })
