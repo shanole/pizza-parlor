@@ -70,7 +70,7 @@ function displayPizzaDetails(ordersListToDisplay) {
   let htmlForPizzaList = "";
   Object.keys(ordersListToDisplay.pizzas).forEach(function (key) {
     const pizza = ordersListToDisplay.findPizza(key);
-    htmlForPizzaList += "<li id=" + pizza.id + ">" + pizza.size + " pizza with " + pizza.toppings.join(", ") + ": $" + pizza.price + "  <button class='deleteButton' id=" + pizza.id + ">Remove</button></li>"});
+    htmlForPizzaList += "<li id=" + pizza.id + ">" + pizza.size + " pizza with " + pizza.toppings.join(", ") + ": $" + pizza.getCost() + "  <button class='deleteButton' id=" + pizza.id + ">Remove</button></li>"});
   pizzaList.html(htmlForPizzaList);
 }
 
@@ -80,11 +80,18 @@ function attachContactListeners() {
     $("#show-order").hide();
     displayPizzaDetails(ordersList);
     $("#show-order").show();
+    $("#total-cost").text(calculateTotalPrice(ordersList))
   });
 };
 
 function calculateTotalPrice(ordersList) {
-
+  let total = 0;
+  Object.keys(ordersList.pizzas).forEach(function(key) {
+    const pizza = ordersList.findPizza(key);
+    pizzaPrice = pizza.getCost();
+    total += pizzaPrice;
+  });
+  return total;
 }
 
 $(document).ready(function () {
@@ -107,17 +114,7 @@ $(document).ready(function () {
 
     ordersList.addPizza(pizza);
     displayPizzaDetails(ordersList);
-    // DISPLAY TOTAL COST
+    $("#total-cost").text(calculateTotalPrice(ordersList))
     // EMPTY OUT CHECKBOX
   })
 })
-
-let testPizza = new Pizza();
-testPizza.pickSize("Small");
-testPizza.addTopping("pepperoni");
-testPizza.addTopping("onion");
-testPizza.addTopping("mushroom");
-
-let testPizza2 = new Pizza();
-testPizza2.pickSize("Small");
-testPizza2.addTopping("pepperoni");
