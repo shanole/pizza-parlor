@@ -16,19 +16,15 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <form id="name">
-          <div class="form-group">
-            <label for="name">Please enter the name for the order:</label>
-            <input id="name" class="form-control" type="text" required>
-          </div>
-        </form>
+        <label for="name">Please enter the name for the order:</label>
+        <input class="form-control" id="name" type="text" required>
         <form id="pizza-order">
           <div class="form-group">
             <label for="size">Select your pizza size:</label>
             <select class="form-control" id="size">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
+              <option value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
             </select>
           </div>
           <div class="form-group">
@@ -49,8 +45,8 @@
       </div>
       <div class="col-md-6">
         <div id="show-order">
-          <p>Current order:</p>
-          <p id="orders"></p>
+          <h3>Current order:</h3>
+          <ul id="pizzas"></ul>
           <div id="buttons"></div>
         </div>
         <div id="total cost">
