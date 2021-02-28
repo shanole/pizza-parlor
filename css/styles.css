@@ -1,3 +1,11 @@
 #show-order {
   display: none;
 }
+
+#total-cost {
+  background-color: yellowgreen;
+}
+
+h3 {
+  font-style: italic;
+}
