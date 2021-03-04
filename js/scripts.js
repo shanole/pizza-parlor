@@ -106,15 +106,14 @@ $(document).ready(function () {
     if($("#only").is(':checked')){
       pizza.toppings.push("cheese only");
     }
-    // else if ($("input:checkbox:checked")===[]){
-    //   console.log($("input:checkbox:checked"));
-    //   pizza.toppings.push("cheese only");
-    // }
-    else {
+    else if ($("input:checkbox:checked").length){
       $("input:checkbox:checked").each(function (){
         const topping = $(this).val();
         pizza.toppings.push(topping);
       })
+    }
+    else {
+      pizza.toppings.push("cheese only");
     }
  
     $("#customer-name").text($("input#name").val());
