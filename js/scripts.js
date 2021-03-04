@@ -63,7 +63,6 @@ const pizzaSizes = {
 }
 
 // User Interface Logic --------------
-let ordersList = new OrdersList();
 
 function displayPizzaDetails(ordersListToDisplay) {
   let pizzaList = $("ul#pizzas");
@@ -74,7 +73,7 @@ function displayPizzaDetails(ordersListToDisplay) {
   pizzaList.html(htmlForPizzaList);
 }
 
-function attachContactListeners() {
+function attachContactListeners(ordersList) {
   $("#pizzas").on("click", ".deleteButton", function () {
     ordersList.deletePizza(this.id);
     $("#show-order").hide();
@@ -95,7 +94,9 @@ function calculateTotalPrice(ordersList) {
 }
 
 $(document).ready(function () {
-  attachContactListeners();
+  let ordersList = new OrdersList();
+
+  attachContactListeners(ordersList);
   $('#only').click(function() {
     $(this).siblings().attr('disabled', this.checked);
     $("#name").removeAttr("disabled");
