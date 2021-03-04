@@ -108,8 +108,8 @@ $(document).ready(function () {
     }
     else if ($("input:checkbox:checked").length){
       $("input:checkbox:checked").each(function (){
-        const topping = $(this).val();
-        pizza.toppings.push(topping);
+        // const topping = $(this).val();
+        pizza.toppings.push($(this).val());
       })
     }
     else {
