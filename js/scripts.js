@@ -34,17 +34,13 @@ OrdersList.prototype.deletePizza = function (id) {
 }
 
 // Business Logic for pizza --------------
-function Pizza() {
-  this.size;
+function Pizza(size) {
+  this.size = size;
   this.toppings = [];
 }
 
 Pizza.prototype.addTopping = function(topping) {
   this.toppings.push(topping);
-}
-
-Pizza.prototype.pickSize = function(size) {
-  this.size = size;
 }
 
 Pizza.prototype.getCost = function() {
@@ -106,8 +102,7 @@ $(document).ready(function () {
   $("form#pizza-order").submit(function (event) {
     event.preventDefault();
 
-    pizza = new Pizza();
-    pizza.pickSize($("#size").val());
+    pizza = new Pizza($("#size").val());
 
     if($("#only").is(':checked')){
       pizza.toppings.push("cheese only");
