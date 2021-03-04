@@ -33,7 +33,7 @@ OrdersList.prototype.deletePizza = function (id) {
   }
 }
 
-// Business Logic for pizza --------------
+// Business Logic for Pizza --------------
 function Pizza(size) {
   this.size = size;
   this.toppings = [];
@@ -44,18 +44,17 @@ Pizza.prototype.addTopping = function(topping) {
 }
 
 Pizza.prototype.getCost = function() {
+  const pizzaSizes = {
+    "Small" : 10,
+    "Medium" : 12,
+    "Large" : 14,
+  };
   let basePrice = pizzaSizes[this.size]*0.7;
   let numberOfToppings = this.toppings.length;
   if (numberOfToppings > 2) {
     basePrice += (numberOfToppings-2)*2;
   }
   return basePrice.toFixed(2);
-}
-
-const pizzaSizes = {
-  "Small" : 10,
-  "Medium" : 12,
-  "Large" : 14,
 }
 
 // User Interface Logic --------------
@@ -107,6 +106,10 @@ $(document).ready(function () {
     if($("#only").is(':checked')){
       pizza.toppings.push("cheese only");
     }
+    // else if ($("input:checkbox:checked")===[]){
+    //   console.log($("input:checkbox:checked"));
+    //   pizza.toppings.push("cheese only");
+    // }
     else {
       $("input:checkbox:checked").each(function (){
         const topping = $(this).val();
