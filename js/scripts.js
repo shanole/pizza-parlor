@@ -58,7 +58,6 @@ Pizza.prototype.getCost = function() {
 }
 
 // User Interface Logic --------------
-
 function displayPizzaDetails(ordersListToDisplay) {
   let pizzaList = $("ul#pizzas");
   let htmlForPizzaList = "";
@@ -90,8 +89,8 @@ function calculateTotalPrice(ordersList) {
 
 $(document).ready(function () {
   let ordersList = new OrdersList();
-
   attachContactListeners(ordersList);
+
   $('#only').click(function() {
     $(this).siblings().attr('disabled', this.checked);
     $("#name").removeAttr("disabled");
@@ -108,7 +107,6 @@ $(document).ready(function () {
     }
     else if ($("input:checkbox:checked").length){
       $("input:checkbox:checked").each(function (){
-        // const topping = $(this).val();
         pizza.toppings.push($(this).val());
       })
     }
